@@ -1,5 +1,8 @@
 package cn.wj.pojo;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 public class Item {
     private Long id;
 
@@ -13,7 +16,21 @@ public class Item {
 
     private Integer status;
 
-    private String desc;
+    private BigDecimal price;
+
+    private String address;
+
+    private Integer dpetId;
+
+    private Integer gredeId;
+
+    private Integer zhuanyeId;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    private String description;
 
     public Long getId() {
         return id;
@@ -63,11 +80,67 @@ public class Item {
         this.status = status;
     }
 
-    public String getDesc() {
-        return desc;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public Integer getDpetId() {
+        return dpetId;
+    }
+
+    public void setDpetId(Integer dpetId) {
+        this.dpetId = dpetId;
+    }
+
+    public Integer getGredeId() {
+        return gredeId;
+    }
+
+    public void setGredeId(Integer gredeId) {
+        this.gredeId = gredeId;
+    }
+
+    public Integer getZhuanyeId() {
+        return zhuanyeId;
+    }
+
+    public void setZhuanyeId(Integer zhuanyeId) {
+        this.zhuanyeId = zhuanyeId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }

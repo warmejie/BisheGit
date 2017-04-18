@@ -21,8 +21,18 @@ public class BiSheResult {
 
     // 响应中的数据
     private Object data;
+    
+    private List<?> rows;
 
-    public static BiSheResult build(Integer status, String msg, Object data) {
+    public List<?> getRows() {
+		return rows;
+	}
+
+	public void setRows(List<?> rows) {
+		this.rows = rows;
+	}
+
+	public static BiSheResult build(Integer status, String msg, Object data) {
         return new BiSheResult(status, msg, data);
     }
 

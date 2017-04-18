@@ -592,6 +592,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</form>
 				<h6> Not a Member Yet? <a href="${pageContext.request.contextPath}/signup">Sign Up Now</a> </h6>
 			</div>
+			<form action="${pageContext.request.contextPath}/aa" method="post">
+			 <input type="text" class="user" name="email" placeholder="Email"  >
+			 <input type="submit" value="Submit">
+			</form>
 		</div>
 	</section>
 	<!-- //sign in form -->

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -65,7 +68,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
+					<c:if test="${sessionScope.user == null}">
 						<a href="${pageContext.request.contextPath}/signin" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+					</c:if>
+					<c:if test="${sessionScope.user != null}">
+					 <a href="${pageContext.request.contextPath}/signin" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> ${sessionScope.user.username}</a>
+					</c:if>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>

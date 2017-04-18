@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wj.pojo.User;
 import cn.wj.service.RegistService;
@@ -34,7 +33,7 @@ public class SignUpController {
 		User user =new User();
 		user.setUsername(name);
 		user.setEmail(email);
-		user.setMobile(Integer.valueOf(mobile));
+		user.setMobile(Integer.parseInt(mobile));
 		user.setPassword(password);
 		BiSheResult result = registService.regist(user);
 		System.out.println(2);

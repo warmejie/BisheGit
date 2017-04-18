@@ -1,5 +1,6 @@
 package cn.wj.controller;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,10 @@ public class SignInController {
 			request.setAttribute("message", result.getMsg());
 			return "signin";
 		}else
-		return "index";
+		    request.getSession().setAttribute("user", result.getData());
+			return "index";
 	}
+	
+	
 
 }

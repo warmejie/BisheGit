@@ -8,9 +8,29 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:component-scan base-package="cn.wj.controller" />
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>  
+        <mvc:message-converters>  
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+                <property name="supportedMediaTypes">  
+                    <list>  
+                        <value>text/plain;charset=UTF-8</value>  
+                        <value>text/html;charset=UTF-8</value>  
+                    </list>  
+                </property>  
+            </bean>  
+            <bean  
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+                <property name="supportedMediaTypes">  
+                    <list>  
+                        <value>application/json; charset=UTF-8</value>  
+                        <value>application/x-www-form-urlencoded; charset=UTF-8</value>  
+                    </list>  
+                </property>  
+            </bean>  
+        </mvc:message-converters>  
+    </mvc:annotation-driven>  
 	
-		<bean
+	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
@@ -22,13 +42,16 @@
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
 	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
 	<mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
+	<mvc:resources location="/WEB-INF/upload/" mapping="/upload/**"/>
 	 
 	<!-- 定义文件上传解析器 -->
-	<bean id="multipartResolver"
-	      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	      <!-- 设定默认编码 -->
-	      <property name="defaultEncoding" value="UTF-8"></property>
-	      <!-- 设定文件上传最大值5MB 5*1024*1024 -->
-	      <property name="maxUploadSize" value="5242880"></property>
-	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- 设置上传文件的最大尺寸为20MB -->
+    <property name="maxUploadSize">
+    <value>20971520</value>
+    </property>
+    <property name="defaultEncoding">
+    <value>UTF-8</value>
+    </property>
+    </bean> 
 </beans>

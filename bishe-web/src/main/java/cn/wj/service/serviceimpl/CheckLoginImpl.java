@@ -1,6 +1,7 @@
 package cn.wj.service.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,15 @@ public class CheckLoginImpl implements CheckLoginService {
        if(realUser.size()==0){
     	   result.setStatus(400);
     	   result.setMsg("此账号不存在");
-       }else if(realUser.get(0).getPassword()!=passerword){
+       }else if(!realUser.get(0).getPassword().equals(passerword)){
     	   result.setStatus(500);
     	   result.setMsg("账号或密码错误");
        }else{
+    	   result.setData(realUser.get(0));
     	   result.setStatus(200);
+    	   result.setMsg("OK");
        }
+        
 		return result;
 	}
 

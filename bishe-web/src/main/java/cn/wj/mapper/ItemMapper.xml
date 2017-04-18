@@ -8,9 +8,16 @@
     <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="dpet_id" property="dpetId" jdbcType="INTEGER" />
+    <result column="grede_id" property="gredeId" jdbcType="INTEGER" />
+    <result column="zhuanye_id" property="zhuanyeId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="cn.wj.pojo.Item" extends="BaseResultMap" >
-    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,10 +78,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cid, title, image, uid, status
+    id, cid, title, image, uid, status, price, address, dpet_id, grede_id, zhuanye_id, 
+    create_time, update_time
   </sql>
   <sql id="Blob_Column_List" >
-    desc
+    description
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.wj.pojo.ItemExample" >
     select
@@ -127,10 +135,14 @@
   <insert id="insert" parameterType="cn.wj.pojo.Item" >
     insert into item (id, cid, title, 
       image, uid, status, 
-      desc)
+      price, address, dpet_id, 
+      grede_id, zhuanye_id, create_time, 
+      update_time, description)
     values (#{id,jdbcType=BIGINT}, #{cid,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{image,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{desc,jdbcType=LONGVARCHAR})
+      #{price,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, #{dpetId,jdbcType=INTEGER}, 
+      #{gredeId,jdbcType=INTEGER}, #{zhuanyeId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.wj.pojo.Item" >
     insert into item
@@ -153,8 +165,29 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="dpetId != null" >
+        dpet_id,
+      </if>
+      <if test="gredeId != null" >
+        grede_id,
+      </if>
+      <if test="zhuanyeId != null" >
+        zhuanye_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="description != null" >
+        description,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -176,8 +209,29 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=LONGVARCHAR},
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="dpetId != null" >
+        #{dpetId,jdbcType=INTEGER},
+      </if>
+      <if test="gredeId != null" >
+        #{gredeId,jdbcType=INTEGER},
+      </if>
+      <if test="zhuanyeId != null" >
+        #{zhuanyeId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -208,8 +262,29 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.desc != null" >
-        desc = #{record.desc,jdbcType=LONGVARCHAR},
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpetId != null" >
+        dpet_id = #{record.dpetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gredeId != null" >
+        grede_id = #{record.gredeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhuanyeId != null" >
+        zhuanye_id = #{record.zhuanyeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -224,7 +299,14 @@
       image = #{record.image,jdbcType=VARCHAR},
       uid = #{record.uid,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
-      desc = #{record.desc,jdbcType=LONGVARCHAR}
+      price = #{record.price,jdbcType=DECIMAL},
+      address = #{record.address,jdbcType=VARCHAR},
+      dpet_id = #{record.dpetId,jdbcType=INTEGER},
+      grede_id = #{record.gredeId,jdbcType=INTEGER},
+      zhuanye_id = #{record.zhuanyeId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      description = #{record.description,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,7 +318,14 @@
       title = #{record.title,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       uid = #{record.uid,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DECIMAL},
+      address = #{record.address,jdbcType=VARCHAR},
+      dpet_id = #{record.dpetId,jdbcType=INTEGER},
+      grede_id = #{record.gredeId,jdbcType=INTEGER},
+      zhuanye_id = #{record.zhuanyeId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,8 +348,29 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=LONGVARCHAR},
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="dpetId != null" >
+        dpet_id = #{dpetId,jdbcType=INTEGER},
+      </if>
+      <if test="gredeId != null" >
+        grede_id = #{gredeId,jdbcType=INTEGER},
+      </if>
+      <if test="zhuanyeId != null" >
+        zhuanye_id = #{zhuanyeId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -272,7 +382,14 @@
       image = #{image,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
-      desc = #{desc,jdbcType=LONGVARCHAR}
+      price = #{price,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      dpet_id = #{dpetId,jdbcType=INTEGER},
+      grede_id = #{gredeId,jdbcType=INTEGER},
+      zhuanye_id = #{zhuanyeId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.wj.pojo.Item" >
@@ -281,7 +398,14 @@
       title = #{title,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      address = #{address,jdbcType=VARCHAR},
+      dpet_id = #{dpetId,jdbcType=INTEGER},
+      grede_id = #{gredeId,jdbcType=INTEGER},
+      zhuanye_id = #{zhuanyeId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

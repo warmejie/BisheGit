@@ -3,7 +3,7 @@ package cn.wj.pojo;
 import java.util.Date;
 
 public class User {
-    private Long uid;
+    private Integer uid;
 
     private String username;
 
@@ -19,11 +19,11 @@ public class User {
 
     private String code;
 
-    public Long getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(Long uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 

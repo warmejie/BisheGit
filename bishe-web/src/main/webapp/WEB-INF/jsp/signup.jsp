@@ -23,8 +23,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //meta tags -->
 <!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
 <!--//fonts-->	
 <!-- js -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -566,7 +566,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3>Sign Up</h3>
 				<form action="${pageContext.request.contextPath}/regist" method="post">
 					<input type="text" name="username" placeholder="Your Name" required=""/> 
-					<input type="text" name="email" placeholder="Your Email" required=""/><span>${message}</span>
+					<input type="text" name="email" placeholder="Your Email" required=""/><span><p style="color:red">${message}</p></span>
 					<input type="text" name="mobile" placeholder="Mobile" required=""/> 
 					<input type="password" name="password" placeholder="Password" required=""/> 
 					<input type="password" name="repassword" placeholder="Confirm Password" required=""/> 
